@@ -7,6 +7,7 @@ const Content = () => {
   const downloadclick = () => {
     alert("downloading")
   }
+  console.log('w' , window.innerWidth)
   return (
     <section className='container'>
      <div className={styles.yearStyle}>
@@ -22,7 +23,24 @@ const Content = () => {
         excellence?
       </p>
      </div>
-     <div className={styles.bookSection}>
+     {window.innerWidth > 767  ? ( // i used this for deploying purpose otherwise css is not taking
+       <div style={{ display: "flex" , justifyContent: "center" , alignItems : "center"}}>
+       <div className={styles.bookpoints}>
+         <p>
+           This <span>2023 state of supply chains report</span> is a reference point for leaders who want to:
+         </p>
+         <ul>
+           <li>Insights from 1,000 supply chain leaders across France, Germany, the United Kingdom, and the United States.</li>
+           <li>A global assessment and regional breakdown of top challenges from 2022, priorities for 2023, and focus areas to achieve supply chain resilience.</li>
+           <li>Recommendations for how leaders can embrace technology and digital solutions that actually work.</li>
+         </ul>
+       </div>
+       <div className={styles.bookImg}>
+         <img src={book} alt='book'/>
+       </div>
+      </div>
+     ) : (
+      <div className={styles.bookSection}>
       <div className={styles.bookpoints}>
         <p>
           This <span>2023 state of supply chains report</span> is a reference point for leaders who want to:
@@ -37,6 +55,7 @@ const Content = () => {
         <img src={book} alt='book'/>
       </div>
      </div>
+     )}
      <div className={styles.downloadOption}>
      <button className='download' onClick={downloadclick}>Download the Report</button>
      </div>
